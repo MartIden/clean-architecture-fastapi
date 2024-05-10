@@ -1,0 +1,2 @@
+class UserBookIsNotExists(Exception):
+    pass

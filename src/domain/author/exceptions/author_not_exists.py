@@ -1,0 +1,2 @@
+class AuthorIsNotExists(Exception):
+    pass
