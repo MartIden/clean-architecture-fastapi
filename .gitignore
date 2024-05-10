@@ -186,4 +186,6 @@ fabric.properties
 
 # Project files
 debug.py
-
+debug.json
+run_create_migrations.sh
+run_migrations.sh
