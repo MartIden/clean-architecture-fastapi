@@ -4,7 +4,7 @@ from fastapi import Depends
 from starlette.requests import Request
 import redis.asyncio as redis
 
-from src.domain.common.ports.redis_repo import IRedisRepoPort
+from src.ports.common.redis_repo import IRedisRepoPort
 
 
 def _get_db_pool(request: Request) -> redis.Redis:

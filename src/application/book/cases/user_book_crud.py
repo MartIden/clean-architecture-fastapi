@@ -5,8 +5,7 @@ from src.domain.book.dto.new_user_book import NewUserBook
 from src.domain.book.dto.update_user_book import UpdateUserBook
 from src.domain.book.entity.user_book import UserBook
 from src.domain.book.exceptions.user_book_not_exists import UserBookIsNotExists
-from src.domain.book.ports.user_book_repo import IUserBookRepoPort
-
+from src.ports.book.user_book_repo import IUserBookRepoPort
 
 class UserBookCrudCase:
 
