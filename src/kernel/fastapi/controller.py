@@ -71,7 +71,7 @@ class IJsonController(ABC):
             self.__controller_logger = ControllerLogger(self)
         return self.__controller_logger
 
-    def log_answer(self, answer: BaseModel, log_level=20) -> None:
+    def log_answer(self, answer: BaseModel, log_level=logging.INFO) -> None:
         self._controller_logger.log_answer(answer, log_level)
 
     def _log_controller(self, message: str, extra: dict, log_level=logging.INFO) -> None:
