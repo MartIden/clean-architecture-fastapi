@@ -1,7 +1,8 @@
 from abc import ABC, abstractmethod
 from typing import Any
 
-from src.kernel.fastapi.persistence.pools import DatabasePools
+from fastapi import FastAPI
+
 from src.kernel.rmq.connector import BaseRMQConnector
 from src.kernel.rmq.handlers.abstract_handler import AbstractRmqHandler
 
@@ -11,11 +12,11 @@ class AbstractRmqHandlerCreator(ABC):
         self,
         message: Any,
         rmq_connector: BaseRMQConnector,
-        db_connection_pools: DatabasePools,
+        application: FastAPI,
     ):
         self._message = message
         self._rmq_connector = rmq_connector
-        self._db_connection_pools = db_connection_pools
+        self._application = application
 
     @abstractmethod
     def create(self) -> AbstractRmqHandler:

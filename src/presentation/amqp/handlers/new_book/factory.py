@@ -9,7 +9,7 @@ class NewBookHandlerFactory(AbstractRmqHandlerCreator):
 
     @property
     def __book_repo(self) -> BookRepo:
-        return BookRepo(self._db_connection_pools.postgres)
+        return BookRepo(self._application.state.pool.postgres)
 
     @property
     def __book_crud(self) -> BookCrudCase:

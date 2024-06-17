@@ -1,6 +1,7 @@
 import traceback
 from typing import Any, List, Type, Optional
 
+from fastapi import FastAPI
 from pydantic import ValidationError
 
 from src.kernel.fastapi.config import get_app_settings
@@ -18,11 +19,11 @@ class HandlersRunner:
         message: Any,
         handlers_factories: List[Type[AbstractRmqHandlerCreator]],
         rmq_connector: BaseRMQConnector,
-        db_connection_pools: DatabasePools,
+        application: FastAPI,
     ):
         self._message = message
         self._rmq_connector = rmq_connector
-        self._db_connection_pools = db_connection_pools
+        self._application = application
         self._handlers_factories = handlers_factories
         self.__app_settings = get_app_settings()
         self._logger = get_json_logger()
@@ -101,7 +102,7 @@ class HandlersRunner:
     def __create_handler(self, handler_factory: Type[AbstractRmqHandlerCreator]):
         try:
             factory = handler_factory(
-                self._message, self._rmq_connector, self._db_connection_pools
+                self._message, self._rmq_connector, self._application
             )
             return factory.create()
         except Exception as err:
