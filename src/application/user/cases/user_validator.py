@@ -1,5 +1,5 @@
 from src.domain.user.entity.user import User
-from src.domain.user.exceptions.user import UserIsNotExists
+from src.domain.user.exceptions.user import UserIsNotExistsError
 
 
 class UserValidatorCase:
@@ -10,4 +10,4 @@ class UserValidatorCase:
     def validate(self) -> None:
 
         if not self.__user:
-            raise UserIsNotExists("User Is Not Exists")
+            raise UserIsNotExistsError("User Is Not Exists")

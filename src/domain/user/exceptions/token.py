@@ -1,7 +1,7 @@
-class TokenIsNotExists(Exception):
+class TokenIsNotExistsError(Exception):
     pass
 
 
-class IncorrectAuthToken(Exception):
+class IncorrectAuthTokenError(Exception):
     pass
 

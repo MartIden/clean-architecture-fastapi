@@ -1,2 +1,2 @@
-class AuthorIsNotExists(Exception):
+class AuthorIsNotExistsError(Exception):
     pass

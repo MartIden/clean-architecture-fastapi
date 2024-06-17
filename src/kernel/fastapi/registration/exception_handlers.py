@@ -8,7 +8,7 @@ from fastapi import FastAPI
 from fastapi.exceptions import RequestValidationError
 from pydantic import ValidationError
 
-from src.domain.user.exceptions.token import IncorrectAuthToken
+from src.domain.user.exceptions.token import IncorrectAuthTokenError
 from src.kernel.fastapi.exceptions.handlers.base import http_error_handler, \
     http_validation_error_handler, http_business_error_handler
 
@@ -34,7 +34,7 @@ exception_handlers = [
     FastapiExceptionHandler(ClientConnectorError, http_error_handler),
     FastapiExceptionHandler(RequestValidationError, http_validation_error_handler),
     FastapiExceptionHandler(PostgresError, http_error_handler),
-    FastapiExceptionHandler(IncorrectAuthToken, http_error_handler),
+    FastapiExceptionHandler(IncorrectAuthTokenError, http_error_handler),
 ]
 
 

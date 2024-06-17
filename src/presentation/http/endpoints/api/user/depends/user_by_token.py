@@ -8,7 +8,7 @@ from src.application.user.cases.token_validator import TokenValidatorCase
 from src.application.user.cases.user_by_token_getter import UserByTokenGetterCase
 from src.application.user.cases.user_validator import UserValidatorCase
 from src.domain.user.entity.user import User
-from src.domain.user.exceptions.token import IncorrectAuthToken
+from src.domain.user.exceptions.token import IncorrectAuthTokenError
 from src.infrastructure.persistence.postgres.repositories.user_repo import UserRepo
 from src.presentation.http.depends.postgres_repo import get_repository
 from src.presentation.http.endpoints.api.user.depends.token_crud_case import get_token_crud_service

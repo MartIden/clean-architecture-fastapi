@@ -4,7 +4,7 @@ from pypika import Order
 from src.domain.user.dto.token.new_token import NewToken
 from src.domain.user.dto.token.update_token import UpdateToken
 from src.domain.user.entity.token import Token
-from src.domain.user.exceptions.token import TokenIsNotExists
+from src.domain.user.exceptions.token import TokenIsNotExistsError
 from src.domain.user.user.token_repo import ITokenRepoPort
 
 
@@ -16,7 +16,7 @@ class TokenCrudCase:
     @staticmethod
     def __raise_if_not_exist(token: Token | BaseModel) -> None:
         if not token:
-            raise TokenIsNotExists("Token With Current Id Is Not Exist")
+            raise TokenIsNotExistsError("Token With Current Id Is Not Exist")
     
     async def create(self, schema: NewToken) -> Token:
         token = await self.__repo.create(schema)

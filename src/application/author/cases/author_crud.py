@@ -4,7 +4,7 @@ from pypika import Order
 from src.domain.author.dto.new_author import NewAuthor
 from src.domain.author.dto.update_author import UpdateAuthor
 from src.domain.author.entity.author import Author
-from src.domain.author.exceptions.author_not_exists import AuthorIsNotExists
+from src.domain.author.exceptions.author_not_exists import AuthorIsNotExistsError
 from src.domain.port.author.author_repo import IAuthorRepoPort
 
 
@@ -16,7 +16,7 @@ class AuthorCrudCase:
     @staticmethod
     def __raise_if_not_exist(author: Author | BaseModel) -> None:
         if not author:
-            raise AuthorIsNotExists("Author With Current Id Is Not Exist")
+            raise AuthorIsNotExistsError("Author With Current Id Is Not Exist")
 
     async def create(self, schema: NewAuthor) -> Author:
         author = await self.__repo.create(schema)

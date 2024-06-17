@@ -1,2 +1,2 @@
-class UserBookIsNotExists(Exception):
+class UserBookIsNotExistsError(Exception):
     pass

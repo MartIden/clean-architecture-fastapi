@@ -6,7 +6,7 @@ from pypika import PostgreSQLQuery, Table, JoinType
 from src.domain.book.dto.new_book import NewBook
 from src.domain.book.dto.update_book import UpdateBook
 from src.domain.book.entity.book import Book
-from src.domain.book.exceptions.book_not_exists import BookIsNotExists
+from src.domain.book.exceptions.book_not_exists import BookIsNotExistsError
 from src.domain.book.book.book_repo import IBookRepoPort
 
 
@@ -50,7 +50,7 @@ class BookRepo(IBookRepoPort):
         book = await self.read(schema.id)
 
         if not book:
-            raise BookIsNotExists("Book With Current Id Is Not Exist")
+            raise BookIsNotExistsError("Book With Current Id Is Not Exist")
 
         query = PostgreSQLQuery.update(self.table) \
             .set(self.table.title, schema.title or book.title) \

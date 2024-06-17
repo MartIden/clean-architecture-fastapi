@@ -3,7 +3,7 @@ from fastapi import Depends
 from src.application.author.cases.author_crud import AuthorCrudCase
 from src.domain.author.dto.response import AuthorJsonResponse, AuthorOut
 from src.domain.author.entity.author import Author
-from src.domain.author.exceptions.author_not_exists import AuthorIsNotExists
+from src.domain.author.exceptions.author_not_exists import AuthorIsNotExistsError
 from src.kernel.fastapi.controller import IJsonController
 from src.presentation.http.endpoints.api.author.depends.author_crud import get_author_crud
 
@@ -24,7 +24,7 @@ class AuthorReaderController(IJsonController):
     @staticmethod
     def __create_answer(author: Author) -> AuthorJsonResponse:
         if not author:
-            raise AuthorIsNotExists("Author With Current Id Is Not Exist")
+            raise AuthorIsNotExistsError("Author With Current Id Is Not Exist")
         return AuthorJsonResponse(
             success=True,
             answer=AuthorOut(**author.model_dump())

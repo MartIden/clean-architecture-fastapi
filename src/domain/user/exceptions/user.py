@@ -1,2 +1,2 @@
-class UserIsNotExists(Exception):
+class UserIsNotExistsError(Exception):
     pass

@@ -4,7 +4,7 @@ from src.application.user.cases.authentication import UserAuthenticationCase
 from src.application.user.cases.token_crud import TokenCrudCase
 from src.domain.user.dto.token.new_token import NewToken
 from src.domain.user.entity.token import Token
-from src.domain.user.exceptions.user import UserIsNotExists
+from src.domain.user.exceptions.user import UserIsNotExistsError
 
 
 class TokenCreatorCase:
@@ -30,7 +30,7 @@ class TokenCreatorCase:
         user = await self.__auth.is_authenticated(login, password)
 
         if not user:
-            raise UserIsNotExists("User With Current Login/Password Is Not Exist")
+            raise UserIsNotExistsError("User With Current Login/Password Is Not Exist")
 
         uuid_str = self.__generate_token()
         return await self.__create_token(user.id, uuid_str)

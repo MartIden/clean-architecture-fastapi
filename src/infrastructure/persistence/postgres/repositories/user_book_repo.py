@@ -7,7 +7,7 @@ from pypika.functions import Count
 from src.domain.book.dto.new_user_book import NewUserBook
 from src.domain.book.dto.update_user_book import UpdateUserBook
 from src.domain.book.entity.user_book import UserBook
-from src.domain.book.exceptions.user_book_not_exists import UserBookIsNotExists
+from src.domain.book.exceptions.user_book_not_exists import UserBookIsNotExistsError
 from src.domain.book.book.user_book_repo import IUserBookRepoPort
 
 
@@ -46,7 +46,7 @@ class UserBookRepo(IUserBookRepoPort):
         user_book = await self.read(schema.id)
 
         if not user_book:
-            raise UserBookIsNotExists("UserBook With Current Id Is Not Exist")
+            raise UserBookIsNotExistsError("UserBook With Current Id Is Not Exist")
 
         query = PostgreSQLQuery.update(self.table) \
             .set(self.table.user_id, schema.user_id or UserBook.user_id) \

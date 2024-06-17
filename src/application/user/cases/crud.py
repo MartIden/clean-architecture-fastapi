@@ -4,7 +4,7 @@ from pypika import Order
 from src.domain.user.dto.new_user import NewUser
 from src.domain.user.dto.update_user import UpdateUser
 from src.domain.user.entity.user import User
-from src.domain.user.exceptions.user import UserIsNotExists
+from src.domain.user.exceptions.user import UserIsNotExistsError
 from src.domain.user.user.user_repo import IUserRepoPort
 
 
@@ -16,7 +16,7 @@ class UserCrudCase:
     @staticmethod
     def __raise_if_not_exist(user: User | BaseModel) -> None:
         if not user:
-            raise UserIsNotExists("User With Current Id Is Not Exist")
+            raise UserIsNotExistsError("User With Current Id Is Not Exist")
     
     async def create(self, schema: NewUser) -> User:
         user = await self.__repo.create(schema)

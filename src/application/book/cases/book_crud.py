@@ -4,7 +4,7 @@ from pypika import Order
 from src.domain.book.dto.new_book import NewBook
 from src.domain.book.dto.update_book import UpdateBook
 from src.domain.book.entity.book import Book
-from src.domain.book.exceptions.book_not_exists import BookIsNotExists
+from src.domain.book.exceptions.book_not_exists import BookIsNotExistsError
 from src.domain.book.book.book_repo import IBookRepoPort
 
 
@@ -16,7 +16,7 @@ class BookCrudCase:
     @staticmethod
     def __raise_if_not_exist(book: Book | BaseModel) -> None:
         if not book:
-            raise BookIsNotExists("Book With Current Id Is Not Exist")
+            raise BookIsNotExistsError("Book With Current Id Is Not Exist")
     
     async def create(self, schema: NewBook) -> Book:
         book = await self.__repo.create(schema)
