@@ -7,7 +7,7 @@ from src.domain.user.dto.token.new_token import NewToken
 from src.domain.user.dto.token.update_token import UpdateToken
 from src.domain.user.entity.token import Token
 from src.domain.user.exceptions.token import TokenIsNotExists
-from src.ports.user.token_repo import ITokenRepoPort
+from src.domain.user.user.token_repo import ITokenRepoPort
 
 
 class TokenRepo(ITokenRepoPort):

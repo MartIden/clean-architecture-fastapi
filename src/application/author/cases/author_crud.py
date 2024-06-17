@@ -5,7 +5,7 @@ from src.domain.author.dto.new_author import NewAuthor
 from src.domain.author.dto.update_author import UpdateAuthor
 from src.domain.author.entity.author import Author
 from src.domain.author.exceptions.author_not_exists import AuthorIsNotExists
-from src.ports.author.author_repo import IAuthorRepoPort
+from src.domain.port.author.author_repo import IAuthorRepoPort
 
 
 class AuthorCrudCase:

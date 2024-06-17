@@ -1,5 +1,5 @@
 from src.domain.user.entity.user import User
-from src.ports.user.user_repo import IUserRepoPort
+from src.domain.user.user.user_repo import IUserRepoPort
 
 
 class UserByTokenGetterCase:

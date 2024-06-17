@@ -1,13 +1,13 @@
 import datetime
 
 from pydantic import BaseModel
-from pypika import PostgreSQLQuery, Table, JoinType, functions
+from pypika import PostgreSQLQuery, Table, JoinType
 
 from src.domain.book.dto.new_book import NewBook
 from src.domain.book.dto.update_book import UpdateBook
 from src.domain.book.entity.book import Book
 from src.domain.book.exceptions.book_not_exists import BookIsNotExists
-from src.ports.book.book_repo import IBookRepoPort
+from src.domain.book.book.book_repo import IBookRepoPort
 
 
 class BookRepo(IBookRepoPort):

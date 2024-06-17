@@ -3,7 +3,7 @@ from typing import Any
 import redis
 from pydantic import BaseModel
 
-from src.ports.common.redis_repo import IRedisRepoPort
+from src.domain.common.common import IRedisRepoPort
 
 
 class BaseRedisRepo(IRedisRepoPort):
